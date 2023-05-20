@@ -70,9 +70,11 @@ async def on_message(message):
             role = await g.create_role(name="hex-{}".format(pad(hex(colour)[2:])), colour=colour)
             await g.edit_role_positions({role: g.me.top_role.position - 1})
 
+        await message.author.add_roles(role)
+
         for hex_role in message.author.roles:
             hex_name = hex_role.name
-            if hex_name.startswith("hex-"):
+            if hex_name.startswith("hex-") and hex_role != role:
                 await message.author.remove_roles(hex_role)
                 
             empty = True
@@ -82,7 +84,6 @@ async def on_message(message):
             if empty:
                 await hex_role.delete()
             
-        await message.author.add_roles(role)
         await message.channel.send("Done!")
 
     #help/commands command
