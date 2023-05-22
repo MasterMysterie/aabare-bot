@@ -48,7 +48,7 @@ async def on_message(message):
         await message.channel.send("hello!")
 
     if msg.startswith(";aabare"):
-        await message.channel.send("AABARE!")
+        await message.channel.send("https://media.discordapp.net/attachments/942563286484926494/1086715371387625593/abare.gif")
 
     #custom colour role command
     if msg.startswith(";namecolour") or msg.startswith(";namecolor"):
